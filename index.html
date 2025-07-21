@@ -18,12 +18,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       min-height: 100vh;
-      overflow: hidden;
     }
 
     .glow-box {
+      margin-top: 80px;
       border: 2px solid;
       border-image: linear-gradient(45deg, #00ffe1, #00ccff, #ff00f7, #00ffe1) 1;
       padding: 40px;
@@ -31,6 +31,7 @@
       box-shadow: 0 0 15px #00ffe1;
       text-align: center;
       animation: pulse 6s infinite;
+      max-width: 600px;
     }
 
     @keyframes pulse {
@@ -60,11 +61,54 @@
       margin-bottom: 30px;
     }
 
+    .contact {
+      margin-top: 60px;
+      padding: 40px 20px;
+      background-color: #1a1a1a;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 16px;
+      box-shadow: 0 0 10px #222;
+    }
+
+    .contact h2 {
+      color: #00f2fe;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input, form textarea {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    form button {
+      padding: 10px;
+      background: #00f2fe;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background: #00d9d9;
+    }
+
     footer {
       font-size: 0.8rem;
       color: #555;
-      position: absolute;
-      bottom: 15px;
+      margin-top: 60px;
+      padding: 20px 0;
       text-align: center;
     }
   </style>
@@ -76,6 +120,16 @@
     <p class="tagline">Where Creativity Meets Code 💻✨</p>
     <p>This is your digital world. Projects, drops & beats all live here.</p>
   </div>
+
+  <section class="contact">
+    <h2>Contact Me</h2>
+    <form id="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
 
   <footer>&copy; 2025 DK • All Rights Reserved</footer>
 
