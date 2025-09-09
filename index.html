@@ -4,67 +4,100 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mystic Deepak Jatav - Where Creativity Meets Hustle</title>
-  <meta name="description" content="Official profile of Mystic Deepak Jatav, a content creator blending creativity and hustle. Follow on Instagram, YouTube, and Facebook for inspiring content!">
-  <meta name="keywords" content="Mystic Deepak, Deepak Jatav, creativity meets hustle, Mystic Deepak Instagram, YouTube Mystic Deepak, content creator India">
-  <meta name="author" content="Mystic Deepak Jatav">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('https://via.placeholder.com/1080x1920') center/cover no-repeat; /* Placeholder background, replace with your image */
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #ff6ec4, #7873f5);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: white;
       text-align: center;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      padding: 0;
     }
 
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ===== Cover Photo ===== */
+    .cover {
+      width: 100%;
+      height: 220px;
+      background: url('assets/cover.jpg') center/cover no-repeat;
+      position: relative;
+    }
+
+    /* ===== Profile ===== */
     .profile {
-      margin-top: 20px;
+      margin-top: -60px; /* overlap on cover */
+      text-align: center;
     }
 
     .profile-img {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid white;
+      animation: fadeIn 2s ease-in-out;
     }
 
     .name {
       font-size: 2rem;
-      margin: 10px 0;
+      margin: 10px 0 5px;
     }
 
     .welcome {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      color: #ffd700; /* Gold color for welcome text */
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      color: #ffd700;
+      animation: glow 2s infinite alternate;
     }
 
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ffd700; }
+      to { text-shadow: 0 0 20px #ff6ec4; }
+    }
+
+    /* ===== Glassmorphism Links ===== */
     .link-section {
       width: 100%;
       max-width: 400px;
+      margin-top: 10px;
     }
 
     .link-item {
       display: flex;
       align-items: center;
-      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 15px;
-      margin: 10px 0;
-      border-radius: 10px;
+      margin: 12px 0;
+      border-radius: 12px;
       text-decoration: none;
       color: white;
-      font-size: 1.1rem;
-      transition: background-color 0.3s;
+      font-size: 1.2rem;
+      font-weight: 500;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .link-item:hover {
-      background-color: rgba(0, 0, 0, 0.9);
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 15px #ffd700;
     }
 
     .link-item i {
@@ -72,29 +105,31 @@
       font-size: 1.5rem;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== Footer ===== */
     .footer {
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-
-    .footer a {
-      color: #00ffe1;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
+      margin: 25px 0;
+      font-size: 0.8rem;
+      color: #ddd;
     }
   </style>
 </head>
 <body>
+  <!-- Cover Photo -->
+  <div class="cover"></div>
+
+  <!-- Profile -->
   <div class="profile">
-    <img src="https://via.placeholder.com/120" alt="Mystic Deepak Jatav Profile Picture" class="profile-img">
+    <img src="assets/dp.jpg" alt="Mystic Deepak Jatav Profile Picture" class="profile-img">
     <div class="name">Mystic Deepak Jatav</div>
     <div class="welcome">✨ Where Creativity Meets Hustle ✨</div>
   </div>
 
+  <!-- Social Links -->
   <div class="link-section">
     <a href="https://www.instagram.com/mysticdeepakjatav?igsh=MXkxZWYzeXpwajZzbw==" target="_blank" class="link-item">
       <i class="fab fa-instagram"></i> Instagram
@@ -107,7 +142,9 @@
     </a>
   </div>
 
+  <!-- Footer -->
   <div class="footer">
+    © 2025 Mystic Deepak Jatav | All Rights Reserved
   </div>
 </body>
 </html>
