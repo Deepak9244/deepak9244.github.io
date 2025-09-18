@@ -1,269 +1,141 @@
-<!doctype html>    
-<html lang="en">    
-<head>    
-<meta charset="utf-8" />    
-<meta name="viewport" content="width=device-width,initial-scale=1" />    
-<title>Mystic Deepak — Insta-like Profile (Demo)</title>    
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MysticDeepakJatav</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      border-bottom: 1px solid #333;
+    }
+    header h1 {
+      font-size: 20px;
+    }
+    .profile {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+    }
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #ff004f;
+      margin-right: 15px;
+    }
+    .bio h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .bio p {
+      margin: 3px 0;
+      font-size: 14px;
+      color: #aaa;
+    }
+    .stories {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .story {
+      text-align: center;
+    }
+    .story img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid #ff004f;
+    }
+    .post {
+      background: #111;
+      margin: 15px 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .post img {
+      width: 100%;
+      display: block;
+    }
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      font-size: 20px;
+    }
+    .like {
+      cursor: pointer;
+    }
+    .liked {
+      color: red;
+    }
+    .qr-btn {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MysticDeepakJatav</h1>
+    <button class="qr-btn" onclick="generateQR()">QR Code</button>
+  </header>
 
-<!-- Font Awesome for icons -->    
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <section class="profile">
+    <img src="assets/dp.jpg" alt="Profile Picture">
+    <div class="bio">
+      <h2>@mysticdeepakjatav</h2>
+      <p>Digital Creator | Music Lover</p>
+      <p>🔥 Living Mystic Vibes</p>
+    </div>
+  </section>
 
-<style>    
-  :root { --bg:#fafafa; --card:#fff; --muted:#8a8a8a; --accent:#ff004c; --ig-grad: linear-gradient(45deg,#f58529,#dd2a7b,#8134af); }    
-  *{box-sizing:border-box}    
-  body{font-family:Poppins,system-ui,Arial;background:var(--bg); margin:0; color:#111}    
-  .container{max-width:980px;margin:28px auto;padding:0 18px}    
-  .topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 0}    
-  .brand{font-weight:700}    
-  .profile-card{display:flex;gap:24px;background:var(--card);padding:18px;border-radius:12px;box-shadow:0 4px 18px rgba(0,0,0,.06)}    
-  .avatar{width:140px;height:140px;border-radius:50%;overflow:hidden;border:4px solid #fff;box-shadow:0 6px 20px rgba(0,0,0,.08)}    
-  .avatar img{width:100%;height:100%;object-fit:cover}    
-  .profile-info{flex:1}    
-  .username-row{display:flex;align-items:center;gap:12px}    
-  .username{font-size:20px;font-weight:700}    
-  .follow-btn{padding:8px 14px;border-radius:8px;border:none;cursor:pointer;font-weight:700}    
-  .follow-btn.follow{background:var(--ig-grad);color:#fff}    
-  .follow-btn.unfollow{background:#efefef;color:#111;border:1px solid #ddd}    
-  .meta{display:flex;gap:18px;margin:12px 0;color:var(--muted);font-size:14px}    
-  .bio{margin:8px 0;color:#333}    
-  .links{margin-top:8px}    
-  .link{color:#3897f0;text-decoration:none;margin-right:10px;font-size:14px}    
+  <section class="stories">
+    <div class="story"><img src="assets/story1.jpg"><p>Story 1</p></div>
+    <div class="story"><img src="assets/story2.jpg"><p>Story 2</p></div>
+    <div class="story"><img src="assets/story3.jpg"><p>Story 3</p></div>
+  </section>
 
-  /* social icons */
-  .social-icons {
-    display: flex;
-    gap: 20px;
-    margin-top: 15px;
-  }
-  .icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    color: #fff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-  }
-  .icon.fb { background: #1877f2; } /* Facebook blue */
-  .icon.ig { background: radial-gradient(circle at 30% 30%, #f58529, #dd2a7b, #8134af, #515bd4); } /* Insta gradient */
-  .icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  }
+  <section class="post">
+    <img src="assets/post1.jpg" alt="Post">
+    <div class="actions">
+      <span class="like" onclick="toggleLike(this)">♡</span>
+      <span>💬</span>
+      <span>↗️</span>
+    </div>
+  </section>
 
-  /* posts grid */    
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:18px}    
-  .post{background:#eee;padding:0;border-radius:4px;overflow:hidden;position:relative}    
-  .post img{display:block;width:100%;height:100%;object-fit:cover}    
-  .post .actions{position:absolute;left:8px;bottom:8px;display:flex;gap:8px}    
-  .icon-btn{background:rgba(0,0,0,0.45);padding:6px;border-radius:6px;color:#fff;font-weight:700;font-size:13px;cursor:pointer}    
-  /* modal */    
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:9999}    
-  .modal .card{width:min(720px,95%);background:#fff;padding:16px;border-radius:10px;color:#111}    
-  .post-head{display:flex;align-items:center;gap:12px}    
-  .post-head img{width:44px;height:44px;border-radius:50%;object-fit:cover}    
-  .comments{max-height:280px;overflow:auto;margin-top:12px;border-top:1px solid #f0f0f0;padding-top:12px}    
-  .comment{margin-bottom:10px}    
-  .comment strong{font-size:13px}    
-  .actions-row{display:flex;gap:8px;margin-top:12px}    
-  .btn{padding:8px 12px;border-radius:8px;border:none;cursor:pointer}    
-  /* small responsive */    
-  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.profile-card{flex-direction:column;align-items:center;text-align:center}.avatar{margin-top:-70px}}    
-  @media(max-width:520px){.grid{grid-template-columns:1fr}}    
-</style>    
-</head>    
-<body>    
-  <div class="container">    
-    <div class="topbar">    
-      <div class="brand">Mystic Deepak</div>    
-      <div>    
-        <button id="subscribeBtn" class="btn" style="background:#FF0000;color:#fff;font-weight:700">Subscribe</button>    
-      </div>    
-    </div>    
-    
-    <!-- profile -->    
-    <div class="profile-card" id="profileCard">    
-      <div class="avatar"><img id="profilePic" src="assets/profile.jpg" alt="profile"></div>    
-      <div class="profile-info">    
-        <div class="username-row">    
-          <div class="username" id="username">@mysticdeepakjatav</div>    
-          <button id="followBtn" class="follow-btn follow">Follow</button>    
-          <button id="editBtn" class="btn" style="background:#fff;border:1px solid #ddd">Edit</button>    
-        </div>    
-    
-        <div class="meta">    
-          <div><strong id="postsCount">6</strong> posts</div>    
-          <div><strong id="followersCount">1200</strong> followers</div>    
-          <div><strong id="followingCount">180</strong> following</div>    
-        </div>    
-    
-        <div class="bio" id="bio">✨ Where creativity meets hustle ✨</div>    
-        <div class="links">    
-          <a id="link1" class="link" href="https://www.youtube.com/@mysticdeepakjatav" target="_blank">YouTube</a>    
-          <a id="link2" class="link" href="https://www.instagram.com/mysticdeepakjatav" target="_blank">Instagram</a>    
-        </div>    
+  <div id="qrcode" style="text-align:center; margin:20px;"></div>
 
-        <!-- social icons added -->
-        <div class="social-icons">
-          <a href="https://facebook.com/yourpage" target="_blank" class="icon fb">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://instagram.com/mysticdeepakjatav" target="_blank" class="icon ig">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-
-      </div>    
-    </div>    
-    
-    <!-- posts -->    
-    <div class="grid" id="postsGrid"></div>    
-  </div>    
-    
-  <!-- modal for post -->    
-  <div class="modal" id="modal">    
-    <div class="card">    
-      <div style="display:flex;justify-content:space-between;align-items:center">    
-        <strong id="modalTitle">Post</strong>    
-        <button id="closeModal" class="btn">Close</button>    
-      </div>    
-      <div style="display:flex;gap:12px;margin-top:12px">    
-        <img id="modalImg" src="" style="width:48%;object-fit:cover;border-radius:6px">    
-        <div style="width:48%">    
-          <div class="post-head"><img id="modalAvatar" src="" alt=""><div><strong id="modalUser"></strong><div id="modalBio" style="font-size:13px;color:#666"></div></div></div>    
-    
-          <div class="comments" id="comments"></div>    
-    
-          <div style="margin-top:10px">    
-            <input id="commentInput" placeholder="Write a comment..." style="width:70%;padding:8px;border:1px solid #ddd;border-radius:6px">    
-            <button id="postComment" class="btn" style="background:#3897f0;color:#fff">Post</button>    
-          </div>    
-        </div>    
-      </div>    
-    </div>    
-  </div>    
-    
-<script>    
-/* ====== Data model in localStorage (demo) ====== */    
-const DEFAULT = {    
-  profile: {    
-    username: "@mysticdeepakjatav",    
-    name: "Mystic Deepak",    
-    bio: "✨ Where creativity meets hustle ✨",    
-    pic: "assets/profile.jpg"    
-  },    
-  stats: { posts: 6, followers: 1200, following: 180 },    
-  posts: [    
-    { id: "p1", img: "https://source.unsplash.com/800x800/?music", likes: 120, comments: [{u:"user1",t:"Nice!"}]},    
-    { id: "p2", img: "https://source.unsplash.com/800x800/?city", likes: 45, comments: []},    
-    { id: "p3", img: "https://source.unsplash.com/800x800/?portrait", likes: 200, comments: [{u:"fan",t:"🔥"}]},    
-    { id: "p4", img: "https://source.unsplash.com/800x800/?night", likes: 12, comments: []},    
-    { id: "p5", img: "https://source.unsplash.com/800x800/?guitar", likes: 78, comments: []},    
-    { id: "p6", img: "https://source.unsplash.com/800x800/?road", likes: 9, comments: []}    
-  ],    
-  followed: false    
-};    
-    
-function loadState(){ return JSON.parse(localStorage.getItem("insta_demo")) || DEFAULT; }    
-function saveState(s){ localStorage.setItem("insta_demo", JSON.stringify(s)); }    
-    
-/* ========= render UI ========= */    
-function render(){    
-  const state = loadState();    
-  document.getElementById("username").innerText = state.profile.username;    
-  document.getElementById("bio").innerText = state.profile.bio;    
-  document.getElementById("profilePic").src = state.profile.pic;    
-  document.getElementById("postsCount").innerText = state.stats.posts;    
-  document.getElementById("followersCount").innerText = state.stats.followers;    
-  document.getElementById("followingCount").innerText = state.stats.following;    
-    
-  const grid = document.getElementById("postsGrid");    
-  grid.innerHTML = "";    
-  state.posts.forEach(p=>{    
-    const el = document.createElement("div");    
-    el.className="post";    
-    el.innerHTML = `<img src="${p.img}" alt=""><div class="actions"><div class="icon-btn like" data-id="${p.id}">❤ ${p.likes}</div><div class="icon-btn open" data-id="${p.id}">💬 ${p.comments.length}</div></div>`;    
-    grid.appendChild(el);    
-  });    
-    
-  document.getElementById("followBtn").innerText = state.followed ? "Following" : "Follow";    
-  document.getElementById("followBtn").className = state.followed ? "follow-btn unfollow" : "follow-btn follow";    
-}    
-render();    
-    
-/* ====== click handlers ====== */    
-document.getElementById("postsGrid").addEventListener("click", e=>{    
-  const like = e.target.closest(".like");    
-  const open = e.target.closest(".open");    
-  if(like){ toggleLike(like.dataset.id); return; }    
-  if(e.target.closest(".post")) {    
-    const idx = Array.from(e.target.closest(".post").parentNode.children).indexOf(e.target.closest(".post"));    
-    openPost(loadState().posts[idx].id);    
-  }    
-  if(open){ openPost(open.dataset.id); }    
-});    
-    
-document.getElementById("followBtn").addEventListener("click", ()=>{    
-  const s = loadState();    
-  s.followed = !s.followed;    
-  s.stats.followers += s.followed ? 1 : -1;    
-  saveState(s); render();    
-});    
-    
-document.getElementById("editBtn").addEventListener("click", ()=>{    
-  const s = loadState();    
-  const u = prompt("Username:", s.profile.username) || s.profile.username;    
-  const name = prompt("Display name:", s.profile.name) || s.profile.name;    
-  const bio = prompt("Bio:", s.profile.bio) || s.profile.bio;    
-  const pic = prompt("Profile image URL:", s.profile.pic) || s.profile.pic;    
-  s.profile.username = u; s.profile.name = name; s.profile.bio = bio; s.profile.pic = pic;    
-  saveState(s); render();    
-});    
-    
-/* modal open */    
-function openPost(id){    
-  const s = loadState();    
-  const p = s.posts.find(x=>x.id===id);    
-  if(!p) return;    
-  document.getElementById("modalTitle").innerText = s.profile.name + " · post";    
-  document.getElementById("modalImg").src = p.img;    
-  document.getElementById("modalAvatar").src = s.profile.pic;    
-  document.getElementById("modalUser").innerText = s.profile.username;    
-  document.getElementById("modalBio").innerText = s.profile.bio;    
-  const com = document.getElementById("comments"); com.innerHTML = "";    
-  p.comments.forEach(c=> com.insertAdjacentHTML("beforeend", `<div class='comment'><strong>${c.u}</strong> ${c.t}</div>`));    
-  document.getElementById("modal").style.display = "flex";    
-  // connect comment posting    
-  document.getElementById("postComment").onclick = function(){    
-    const v = document.getElementById("commentInput").value.trim(); if(!v) return;    
-    p.comments.push({u: "You", t: v});    
-    saveState(s); render();    
-    document.getElementById("commentInput").value = "";    
-    openPost(id); // refresh modal    
-  }    
-}    
-    
-/* modal close */    
-document.getElementById("closeModal").addEventListener("click", ()=> document.getElementById("modal").style.display="none");    
-    
-/* like toggle */    
-function toggleLike(id){    
-  const s = loadState(); const p = s.posts.find(x=>x.id===id);    
-  if(!p) return;    
-  p.likes += 1;    
-  saveState(s); render();    
-}    
-    
-/* subscribe button opens youtube */    
-document.getElementById("subscribeBtn").addEventListener("click", ()=> window.open("https://youtube.com/@mysticdeepakjatav","_blank"));    
-    
-/* small helper: initial save */    
-if(!localStorage.getItem("insta_demo")) saveState(DEFAULT);    
-    
-</script>    
-</body>    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    function toggleLike(el) {
+      el.classList.toggle("liked");
+      el.textContent = el.classList.contains("liked") ? "❤️" : "♡";
+    }
+    function generateQR() {
+      document.getElementById("qrcode").innerHTML = "";
+      new QRCode(document.getElementById("qrcode"), {
+        text: window.location.href,
+        width: 128,
+        height: 128
+      });
+    }
+  </script>
+</body>
 </html>
