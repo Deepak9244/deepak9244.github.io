@@ -2,140 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MysticDeepakJatav</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 15px;
-      border-bottom: 1px solid #333;
-    }
-    header h1 {
-      font-size: 20px;
-    }
-    .profile {
-      display: flex;
-      align-items: center;
-      padding: 15px;
-    }
-    .profile img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 3px solid #ff004f;
-      margin-right: 15px;
-    }
-    .bio h2 {
-      margin: 0;
-      font-size: 18px;
-    }
-    .bio p {
-      margin: 3px 0;
-      font-size: 14px;
-      color: #aaa;
-    }
-    .stories {
-      display: flex;
-      gap: 10px;
-      padding: 10px;
-      overflow-x: auto;
-    }
-    .story {
-      text-align: center;
-    }
-    .story img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 2px solid #ff004f;
-    }
-    .post {
-      background: #111;
-      margin: 15px 0;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .post img {
-      width: 100%;
-      display: block;
-    }
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px;
-      font-size: 20px;
-    }
-    .like {
-      cursor: pointer;
-    }
-    .liked {
-      color: red;
-    }
-    .qr-btn {
-      background: #fff;
-      color: #000;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-  </style>
+  <title>D&K Logo</title>
 </head>
-<body>
-  <header>
-    <h1>MysticDeepakJatav</h1>
-    <button class="qr-btn" onclick="generateQR()">QR Code</button>
-  </header>
-
-  <section class="profile">
-    <img src="assets/dp.jpg" alt="Profile Picture">
-    <div class="bio">
-      <h2>@mysticdeepakjatav</h2>
-      <p>Digital Creator | Music Lover</p>
-      <p>🔥 Living Mystic Vibes</p>
-    </div>
-  </section>
-
-  <section class="stories">
-    <div class="story"><img src="assets/story1.jpg"><p>Story 1</p></div>
-    <div class="story"><img src="assets/story2.jpg"><p>Story 2</p></div>
-    <div class="story"><img src="assets/story3.jpg"><p>Story 3</p></div>
-  </section>
-
-  <section class="post">
-    <img src="assets/post1.jpg" alt="Post">
-    <div class="actions">
-      <span class="like" onclick="toggleLike(this)">♡</span>
-      <span>💬</span>
-      <span>↗️</span>
-    </div>
-  </section>
-
-  <div id="qrcode" style="text-align:center; margin:20px;"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script>
-    function toggleLike(el) {
-      el.classList.toggle("liked");
-      el.textContent = el.classList.contains("liked") ? "❤️" : "♡";
-    }
-    function generateQR() {
-      document.getElementById("qrcode").innerHTML = "";
-      new QRCode(document.getElementById("qrcode"), {
-        text: window.location.href,
-        width: 128,
-        height: 128
-      });
-    }
-  </script>
+<body style="background:#222; display:flex; justify-content:center; align-items:center; height:100vh;">
+  <!-- Yehi tera SVG code -->
+  <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="180" fill="#0d3b52"/>
+    <g fill="#f0e6d2">
+      <path d="M 90 110 L 90 290 L 100 290 L 100 120 L 165 120 C 215 120 250 155 250 200 C 250 245 215 270 165 270 L 100 270 L 100 280 L 165 280 C 220 280 260 245 260 200 C 260 155 220 110 165 110 Z"/>
+      <ellipse cx="245" cy="200" rx="35" ry="50" fill="none" stroke="#f0e6d2" stroke-width="8" transform="rotate(-20 245 200)"/>
+      <path d="M 230 175 Q 260 165 280 185" fill="none" stroke="#f0e6d2" stroke-width="6"/>
+      <path d="M 270 120 L 270 280 L 280 280 L 280 120 Z M 275 200 L 320 120 L 332 126 L 287 206 Z M 275 200 L 320 280 L 332 274 L 287 194 Z"/>
+    </g>
+    <defs>
+      <path id="circlePath" d="M 200,80 m -100,0 a 100,100 0 1,1 200,0 a 100,100 0 1,1 -200,0" fill="none"/>
+    </defs>
+    <text fill="#f0e6d2" font-family="Georgia, serif" font-size="14" letter-spacing="8" opacity="0.7">
+      <textPath href="#circlePath" startOffset="25%">D K • D K • D K • D K</textPath>
+    </text>
+    <text x="200" y="340" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#f0e6d2" text-anchor="middle" letter-spacing="10">D K</text>
+  </svg>
 </body>
 </html>
